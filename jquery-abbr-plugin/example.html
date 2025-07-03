@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Abbr Plugin Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jquery.abbr.js"></script>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Contoh penggunaan sederhana
+            let result = $.abbr('div#container.wrapper{Hello World}[data-role=main]');
+            $('#output').html(result);
+
+            // Contoh multi line
+            //let multiLine = $.abbr('div#parent.content>(h5.child{Child 1}|p.child{Child 2}|span.child{Child 3})', true);
+            let args=[];
+            for (let i = 0; i < 20; i++) {
+                args.push(`li.item{Item ${i+1}}`);
+            }
+            args = args.join('|');
+            let multiLine = $.abbr(`ul>(${args})`, true);
+            console.log(multiLine);
+        });
+    </script>
+
+</body>
+</html>
